@@ -5,14 +5,15 @@ import './comment-card.css';
 
 export function CommentCard(props) {
 	const {
+		author,
 		comment,
 		onEditToggle,
-		onInputChange
+		onInputChange,
 	} = props;
 	return (
 		<Card
 			size="small"
-			title={ `${comment.author.userName} (${comment.author.name}) - ${comment.date}` }
+			title={ `${author.userName} (${author.name}) - ${comment.date}` }
 			extra={
 				<span>
 					<Button htmlType="button" onClick={ () => onEditToggle(comment.id) }>

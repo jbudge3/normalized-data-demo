@@ -46,20 +46,18 @@ export class NonNormalized extends Component {
 	}
 
 	_handleEditToggle = (id) => {
-		const newComments = this.state.comments.slice();
-		const index = newComments.findIndex(comment => comment.id === id);
-		newComments[index].editing = !newComments[index].editing;
-		this.setState({
-			comments: newComments
+		this.setState((prevState) => {
+			const index = prevState.comments.findIndex(comment => comment.id === id);
+			prevState.comments[index].editing = !prevState.comments[index].editing;
+			return prevState;
 		});
 	};
 
 	_handleInputChange = (value, id) => {
-		const newComments = this.state.comments.slice();
-		const index = newComments.findIndex(comment => comment.id === id);
-		newComments[index].text = value;
-		this.setState({
-			comments: newComments
+		this.setState((prevState) => {
+			const index = prevState.comments.findIndex(comment => comment.id === id);
+			prevState.comments[index].text = value;
+			return prevState;
 		});
 	};
 
@@ -69,6 +67,7 @@ export class NonNormalized extends Component {
 		return comments.map((comment) => {
 			return (
 				<CommentCard
+					author={ comment.author }
 					key={ comment.id }
 					comment={ comment }
 					onEditToggle={ this._handleEditToggle }
@@ -79,6 +78,10 @@ export class NonNormalized extends Component {
 	};
 
 	render() {
+		if (!this.props.show) {
+			return null;
+		}
+
 		return (
 			<div className="Comments">
 				{ this._renderCommentCards() }
