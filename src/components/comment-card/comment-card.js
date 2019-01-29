@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, Icon } from "antd";
 import { Input } from "antd";
+import './comment-card.css';
 
 export function CommentCard(props) {
 	const {
