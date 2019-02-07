@@ -45,21 +45,17 @@ export class NonNormalized extends Component {
 		};
 	}
 
-	_handleEditToggle = (id) => {
-		this.setState((prevState) => {
-			const index = prevState.comments.findIndex(comment => comment.id === id);
-			prevState.comments[index].editing = !prevState.comments[index].editing;
-			return prevState;
-		});
-	};
+	_handleEditToggle = (id) => this.setState((prevState) => {
+		const index = prevState.comments.findIndex(comment => comment.id === id);
+		prevState.comments[index].editing = !prevState.comments[index].editing;
+		return prevState;
+	});
 
-	_handleInputChange = (value, id) => {
-		this.setState((prevState) => {
-			const index = prevState.comments.findIndex(comment => comment.id === id);
-			prevState.comments[index].text = value;
-			return prevState;
-		});
-	};
+	_handleInputChange = (value, id) => this.setState((prevState) => {
+		const index = prevState.comments.findIndex(comment => comment.id === id);
+		prevState.comments[index].text = value;
+		return prevState;
+	});
 
 	_renderCommentCards = () => {
 		const { comments } = this.state;

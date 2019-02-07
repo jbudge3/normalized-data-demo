@@ -12,21 +12,21 @@ export class Normalized extends Component {
 					893: {
 						id: 893,
 						editing: false,
-						text: 'Hey I think this is pretty lame',
+						text: 'Hey I think this is pretty awesome',
 						date: 'Jan 24, 2019',
 						authorId: 45
 					},
 					946: {
 						id: 946,
 						editing: false,
-						text: `No way, it's only kind of lame`,
+						text: `No way, it's only kind of awesome`,
 						date: 'Jan 25, 2019',
 						authorId: 72
 					},
 					1034: {
 						id: 1034,
 						editing: false,
-						text: `Yeah ok...I guess it's only kind of lame`,
+						text: `Yeah ok...I guess it's only kind of awesome`,
 						date: 'Jan 26, 2019',
 						authorId: 45
 					}
@@ -51,19 +51,15 @@ export class Normalized extends Component {
 		};
 	}
 
-	_handleEditToggle = (id) => {
-		this.setState((prevState) => {
-			prevState.comments.byId[id].editing = !prevState.comments.byId[id].editing;
-			return prevState;
-		});
-	};
+	_handleEditToggle = (id) => this.setState((prevState) => {
+		prevState.comments.byId[id].editing = !prevState.comments.byId[id].editing;
+		return prevState;
+	});
 
-	_handleInputChange = (value, id) => {
-		this.setState((prevState) => {
-			prevState.comments.byId[id].text = value;
-			return prevState;
-		});
-	};
+	_handleInputChange = (value, id) => this.setState((prevState) => {
+		prevState.comments.byId[id].text = value;
+		return prevState;
+	});
 
 	_renderCommentCards = () => {
 		const { comments, authors } = this.state;
